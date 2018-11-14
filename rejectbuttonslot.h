@@ -14,6 +14,7 @@ public slots:
 public:
     RejectButtonSlot();
     void rejectByService();
+
 };
 
 #endif // REJECTBUTTONSLOT_H

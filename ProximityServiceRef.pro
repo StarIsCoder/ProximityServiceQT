@@ -1,5 +1,6 @@
 QT += quick
 QT += widgets
+QT += multimedia multimediawidgets
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -20,7 +21,17 @@ SOURCES += \
     rejectbuttonslot.cpp \
     endcallbuttonslot.cpp \
     screenshotimageprovider.cpp \
-    handlesnapshotid.cpp
+    handlesnapshotid.cpp \
+    AudioAnalyzer.cpp \
+    AudioMessageReader.cpp \
+    MessageAssembler.cpp \
+    MessageRetainer.cpp \
+    RingBuffer.cpp \
+    crc.c \
+    fft.c \
+    recordslotmac.cpp \
+    recorderslot.cpp
+
 
 RESOURCES += qml.qrc
 
@@ -42,4 +53,21 @@ HEADERS += \
     rejectbuttonslot.h \
     endcallbuttonslot.h \
     screenshotimageprovider.h \
-    handlesnapshotid.h
+    handlesnapshotid.h \
+    AudioAnalyzer.hpp \
+    AudioMessageReader.hpp \
+    crc.h \
+    fft.h \
+    MessageAssembler.hpp \
+    MessageListener.hpp \
+    MessageReceiver.hpp \
+    MessageRetainer.hpp \
+    RingBuffer.hpp \
+    recordslotmac.h \
+    recorderslot.h
+
+
+mac: LIBS += -framework AudioToolbox
+
+mac: LIBS += -framework CoreFoundation
+else:unix|win32: LIBS += -lCoreFoundation

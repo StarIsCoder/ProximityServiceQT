@@ -15,6 +15,7 @@ QImage SnapshotImageProvider::requestImage(const QString &id, QSize *size, const
     int screenNumber = QApplication::desktop()->screenNumber(QCursor::pos());
     QScreen* screen = QApplication::screens().at(screenNumber);
     QRect screenGeometry = screen->geometry();
+    QGuiApplication::primaryScreen();
     QPixmap pixmap = screen->grabWindow(0, screenGeometry.x(), screenGeometry.y(), screenGeometry.width(), screenGeometry.height());
     screenshot = pixmap.toImage();
     qDebug() << "From Mac" << screenshot;

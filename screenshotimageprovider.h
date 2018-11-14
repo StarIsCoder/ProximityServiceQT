@@ -15,7 +15,8 @@
 #include <QQmlProperty>
 #include <handlesnapshotid.h>
 #include <QQuickWindow>
-
+#include <QGuiApplication>
+#include <QWindow>
 class SnapshotImageProvider:public QQuickImageProvider
 {
 public:

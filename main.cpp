@@ -9,8 +9,7 @@
 #include <QScreen>
 #include <screenshotimageprovider.h>
 #include <handlesnapshotid.h>
-#include <QQuickWindow>
-#include <QtAndroidExtras/QAndroidIntent>
+#include <recorderslot.h>
 
 int main(int argc, char *argv[])
 {
@@ -48,5 +47,8 @@ int main(int argc, char *argv[])
     EndCallButtonSlot endCallButtonSlot;
     QObject::connect(endCallButton, SIGNAL(endCall(qint32)), &endCallButtonSlot, SLOT(endCall(qint32)));
 
+    QObject *recordButton = viewLoader->findChild<QObject*>("recordButtonObject");
+    RecorderSlot recordSlot;
+    QObject::connect(recordButton, SIGNAL(sendRecordSignal()), &recordSlot, SLOT(receiveRecordSignal()));
     return app.exec();
 }

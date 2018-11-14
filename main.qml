@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Window 2.2
 import QtQuick.Controls 2.4
+import QtMultimedia 5.8
 
 Window {
     visible: true
@@ -81,9 +82,9 @@ Window {
         objectName: "imageObject"
         cache: false;
         x: 23
-        y: 191
+        y: 259
         width: 325
-        height: 513
+        height: 445
         source: ""
     }
     Timer {
@@ -120,4 +121,15 @@ Window {
             snapshotImage.source = "image://snapshotimageprovider/fetch"
         }
     }
+
+    Button {
+        id: recordButton
+        objectName: "recordButtonObject"
+        signal sendRecordSignal()
+        x: 131
+        y: 191
+        text: qsTr("Record")
+        onClicked: recordButton.sendRecordSignal()
+    }
+
 }
